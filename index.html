@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft Solutions | IT Blog</title>
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #0088ff;
+            --bg-dark: #0a0a12;
+            --bg-card: #161625;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 18, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1a2e 100%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .purpose-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 4px 20px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Sections General */
+        section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            color: #fff;
+        }
+
+        /* Grid Layouts */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a2a35;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Specific Styles for Videos */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe, .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Specific Styles for Books */
+        .book-cover {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 3rem;
+        }
+
+        /* Specific Styles for News */
+        .news-item {
+            display: flex;
+            gap: 15px;
+            padding: 1rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .news-date {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            height: fit-content;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #050508;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo-container">
+            <!-- LOGO IMAGE -->
+            <img src="https://image.qwenlm.ai/public_source/3f7d80b1-13d3-47ec-9b04-eb54631ac80c/1ed6b365c-f42f-4c91-b8b7-9a202f0c14b0.png" alt="CodeCraft Logo" class="logo-img">
+            <span class="brand-name">CodeCraft Solutions</span>
+        </div>
+        <div class="nav-links">
+            <a href="#articles">Articles</a>
+            <a href="#videos">Videos</a>
+            <a href="#books">Books</a>
+            <a href="#news">News</a>
+            <a href="#culture">Culture</a>
+        </div>
+    </nav>
+
+    <!-- HEADER / PURPOSE -->
+    <header>
+        <h1>Building the Digital Future</h1>
+        <div class="purpose-box">
+            <h3>Our Purpose</h3>
+            <p>Welcome to CodeCraft Solutions. As an independent IT professional, my mission is to bridge the gap between complex technology and practical application. This blog serves as a curated library of knowledge, exploring the depths of software architecture, emerging tech trends, and the digital culture that shapes our world.</p>
+        </div>
+    </header>
+
+    <!-- SECTION: ARTICLES -->
+    <section id="articles">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="grid-container">
+            <!-- Article 1 -->
+            <article class="card">
+                <div class="card-content">
+                    <h3 class="card-title">The Rise of AI in Web Dev</h3>
+                    <p class="card-text">How artificial intelligence is changing the way we write code and deploy applications in 2024.</p>
+                </div>
+            </article>
+            <!-- Article 2 -->
+            <article class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Cybersecurity Basics</h3>
+                    <p class="card-text">Essential tips for securing your freelance business and client data against modern threats.</p>
+                </div>
+            </article>
+            <!-- Article 3 -->
+            <article class="card">
+                <div class="card-content">
+                    <h3 class="card-title">React vs Vue: 2024 Update</h3>
+                    <p class="card-text">A comprehensive comparison of the two most popular frontend frameworks for new projects.</p>
+                </div>
+            </article>
+            <!-- Article 4 -->
+            <article class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Remote Work Culture</h3>
+                    <p class="card-text">Maintaining productivity and mental health while working as a digital nomad.</p>
+                </div>
+            </article>
+            <!-- Article 5 -->
+            <article class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Cloud Architecture Patterns</h3>
+                    <p class="card-text">Understanding serverless computing and microservices for scalable applications.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION: VIDEOS (EDITABLE) -->
+    <section id="videos">
+        <h2 class="section-title">Video Tutorials</h2>
+        <div class="grid-container">
+            <!-- 
+                HOW TO EDIT VIDEOS:
+                Replace the 'src' link in the iframe below with your YouTube embed link.
+                Example: src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            -->
+            
+            <!-- Video 1 -->
+            <div class="card">
+                <div class="video-wrapper">
+                    <!-- EDIT SRC HERE -->
+                    <iframe src="video1.mp4" title="Video 1" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Intro to Python</h3>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="card">
+                <div class="video-wrapper">
+                    <!-- EDIT SRC HERE -->
+                    <iframe src="video2.mp4" title="Video 2" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Intro to CSS</h3>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="card">
+                <div class="video-wrapper">
+                    <!-- EDIT SRC HERE -->
+                    <iframe src="video3.mp4" title="Video 3" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Intro to NetBeans</h3>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: BOOKS (EDITABLE) -->
+    <section id="books">
+        <h2 class="section-title">Recommended Books</h2>
+        <div class="grid-container">
+            <!-- 
+                HOW TO EDIT BOOKS:
+                Change the text inside <h3> for the title.
+                Change the text inside <p> for the description.
+                To change the image, replace the src in the <img> tag.
+            -->
+
+            <!-- Book 1 -->
+            <div class="card">
+                <!-- EDIT IMAGE SRC -->
+                <img src="imagen1.jpg" alt="Book Cover" class="book-cover">
+                <div class="card-content">
+                    <h3 class="card-title">Clean Code</h3>
+                    <p class="card-text">A Handbook of Agile Software Craftsmanship by Robert C. Martin.</p>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="card">
+                <!-- EDIT IMAGE SRC -->
+                <img src="imagen2.jpg" alt="Book Cover" class="book-cover">
+                <div class="card-content">
+                    <h3 class="card-title">The Pragmatic Programmer</h3>
+                    <p class="card-text">Your Journey to Mastery by Andrew Hunt and David Thomas.</p>
+                </div>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="card">
+                <!-- EDIT IMAGE SRC -->
+                <img src="imagen3.jpg" alt="Book Cover" class="book-cover">
+                <div class="card-content">
+                    <h3 class="card-title">Design Patterns</h3>
+                    <p class="card-text">Elements of Reusable Object-Oriented Software (Gang of Four).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: NEWS -->
+    <section id="news">
+        <h2 class="section-title">Tech News</h2>
+        <div class="card">
+            <!-- News Item 1 -->
+            <div class="news-item">
+                <div class="news-date">OCT 24</div>
+                <div>
+                    <h3 class="card-title">New JavaScript Framework Released</h3>
+                    <p class="card-text">A lightweight alternative to React has just hit version 1.0, promising faster render times.</p>
+                </div>
+            </div>
+            <!-- News Item 2 -->
+            <div class="news-item">
+                <div class="news-date">OCT 22</div>
+                <div>
+                    <h3 class="card-title">AI Regulations Proposed</h3>
+                    <p class="card-text">Global tech leaders meet to discuss ethical guidelines for generative AI models.</p>
+                </div>
+            </div>
+            <!-- News Item 3 -->
+            <div class="news-item">
+                <div class="news-date">OCT 20</div>
+                <div>
+                    <h3 class="card-title">Quantum Computing Breakthrough</h3>
+                    <p class="card-text">Researchers achieve stable qubits at room temperature for the first time.</p>
+                </div>
+            </div>
+            <!-- News Item 4 -->
+            <div class="news-item">
+                <div class="news-date">OCT 18</div>
+                <div>
+                    <h3 class="card-title">Major Browser Update</h3>
+                    <p class="card-text">Chrome announces new privacy features blocking third-party cookies by default.</p>
+                </div>
+            </div>
+            <!-- News Item 5 -->
+            <div class="news-item">
+                <div class="news-date">OCT 15</div>
+                <div>
+                    <h3 class="card-title">Cybersecurity Summit</h3>
+                    <p class="card-text">Annual summit focuses on protecting critical infrastructure from ransomware.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CULTURE / IMAGES -->
+    <section id="culture">
+        <h2 class="section-title">Digital Culture & Images</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="imagen4.jpg" alt="Culture Image" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-content">
+                    <h3 class="card-title">Minimalist Setup</h3>
+                    <p class="card-text">The beauty of a clean desk for a clear mind.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="imagen5.jpg" alt="Culture Image" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-content">
+                    <h3 class="card-title">Hackathon Vibes</h3>
+                    <p class="card-text">48 hours of coding, pizza, and innovation.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="imagen6.jpg" alt="Culture Image" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-content">
+                    <h3 class="card-title">Open Source Community</h3>
+                    <p class="card-text">Collaborating globally to build better software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 CodeCraft Solutions. All rights reserved.</p>
+        <p>Contact: hello@codecraft.solutions</p>
+    </footer>
+
+</body>
+</html>
+
